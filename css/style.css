@@ -9,3 +9,66 @@
 .category-filters{
     display:none;
 }
+
+
+body{
+    background:#f8f9fa;
+}
+
+.catalog-layout{
+    display:flex;
+    gap:24px;
+}
+
+.filters{
+    width: 300px;
+    height: calc(100vh - 180px);
+    overflow-y: auto;
+    position: sticky;
+    top: 20px;
+}
+
+.filter-box{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:16px;
+}
+
+.products{
+    flex:1;
+}
+
+.product-card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    height:100%;
+    border:1px solid #eee;
+}
+
+.product-image{
+    height:220px;
+    background:#e9ecef;
+}
+
+.product-body{
+    padding:15px;
+}
+
+.price{
+    font-size:22px;
+    font-weight:700;
+}
+
+@media (max-width: 992px){
+
+    .catalog-layout{
+        flex-direction:column;
+    }
+
+    .filters{
+        width:100%;
+    }
+
+}
