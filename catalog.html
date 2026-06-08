@@ -1,0 +1,2354 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Комп'ютерні окуляри</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+
+body{
+    background:#f8f9fa;
+}
+
+.catalog-layout{
+    display:flex;
+    gap:24px;
+}
+
+.filters{
+    width: 300px;
+    height: calc(100vh - 180px);
+    overflow-y: auto;
+    position: sticky;
+    top: 20px;
+}
+
+.filter-box{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:16px;
+}
+
+.products{
+    flex:1;
+}
+
+.product-card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    height:100%;
+    border:1px solid #eee;
+}
+
+.product-image{
+    height:220px;
+    background:#e9ecef;
+}
+
+.product-body{
+    padding:15px;
+}
+
+.price{
+    font-size:22px;
+    font-weight:700;
+}
+
+@media (max-width: 992px){
+
+    .catalog-layout{
+        flex-direction:column;
+    }
+
+    .filters{
+        width:100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-white border-bottom">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="index.html">
+            OPTIC SHOP
+        </a>
+
+        <form class="d-flex flex-grow-1 mx-lg-4">
+            <input class="form-control" placeholder="Пошук товарів">
+        </form>
+
+        <button class="btn btn-outline-primary">
+            Кошик
+        </button>
+
+    </div>
+</nav>
+
+<div class="container py-4">
+
+    <nav class="mb-2">
+
+        <a href="index.html" class="text-decoration-none">
+            Головна
+        </a>
+
+        /
+
+        <span id="categoryBreadcrumb">
+        </span>
+
+    </nav>
+
+    <h1 class="mb-4" id="categoryTitle">
+    </h1>
+
+    <div class="catalog-layout">
+
+        <!-- FILTERS -->
+
+        <aside class="filters">
+
+            <div id="prescriptionFilters" class="category-filters">
+                <div class="alert alert-secondary">
+                    Розділ "Замовлення по рецепту" в розробці
+                </div>
+            </div>
+
+            <!-- Окуляри для зору -->
+            <div id="visionFilters" class="category-filters">
+                <div class="accordion" id="visionAccordion">
+                    <!-- Бренд -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#visionBrand">
+                                Бренд
+                            </button>
+                        </h2>
+
+                        <div id="visionBrand"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#visionAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ray-Ban</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Polaroid</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Carrera</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Ціна -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#visionPrice">
+                                Ціна
+                            </button>
+                        </h2>
+
+                        <div id="visionPrice"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#visionAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="row g-2 mb-3">
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="Від">
+                                    </div>
+
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="До">
+                                    </div>
+                                </div>
+
+                                <label class="form-label">
+                                    Діапазон цін
+                                </label>
+
+                                <input type="range"
+                                    class="form-range"
+                                    min="0"
+                                    max="10000">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Стать -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#visionGender">
+                                Стать
+                            </button>
+                        </h2>
+
+                        <div id="visionGender"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#visionAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Чоловічі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Жіночі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Унісекс</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Дитячі</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Форма оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#visionShape">
+                                Форма оправи
+                            </button>
+                        </h2>
+
+                        <div id="visionShape"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#visionAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Квадратні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Круглі</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Прямокутні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Авіатори</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Котяче око</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Панто</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Овальні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Багатокутні</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Тип оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#visionFrameType">
+                                Тип оправи
+                            </button>
+                        </h2>
+
+                        <div id="visionFrameType"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#visionAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Повноободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Напівободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Безободкові</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Колір -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#visionColor">
+                                Колір
+                            </button>
+                        </h2>
+
+                        <div id="visionColor"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#visionAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Чорний</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Сріблястий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Золотий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Коричневий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Синій</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Матеріал оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#visionMaterial">
+                                Матеріал оправи
+                            </button>
+                        </h2>
+
+                        <div id="visionMaterial"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#visionAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Пластик (Ацетат)</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Метал</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Титан</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Комбінований</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Дерево</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Наявність -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#visionStock">
+                                Наявність
+                            </button>
+                        </h2>
+
+                        <div id="visionStock"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#visionAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        В наявності
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Сонцезахисні окуляри -->
+            <div id="sunFilters" class="category-filters">
+                <div class="accordion" id="sunAccordion">
+                    <!-- Бренд -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunBrand">
+                                Бренд
+                            </button>
+                        </h2>
+
+                        <div id="sunBrand"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ray-Ban</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Polaroid</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Carrera</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Ціна -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunPrice">
+                                Ціна
+                            </button>
+                        </h2>
+
+                        <div id="sunPrice"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="row g-2 mb-3">
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="Від">
+                                    </div>
+
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="До">
+                                    </div>
+                                </div>
+
+                                <label class="form-label">
+                                    Діапазон цін
+                                </label>
+
+                                <input type="range"
+                                    class="form-range"
+                                    min="0"
+                                    max="10000">
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Стать -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunGender">
+                                Стать
+                            </button>
+                        </h2>
+
+                        <div id="sunGender"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Чоловічі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Жіночі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Унісекс</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Дитячі</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Поляризація -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunPolarization">
+                                Поляризація
+                            </button>
+                        </h2>
+
+                        <div id="sunPolarization"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Так</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ні</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- UV Захист -->
+                    <div class="accordion-item">
+
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunUv">
+
+                                Ступінь захисту UV
+
+                            </button>
+                        </h2>
+
+                        <div id="sunUv"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">UV400</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Категорія 1</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Категорія 2</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Категорія 3</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Категорія 4</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Дзеркальне напилення -->
+                    <div class="accordion-item">
+
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunMirror">
+
+                                Дзеркальне напилення
+
+                            </button>
+                        </h2>
+
+                        <div id="sunMirror"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Так</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ні</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Матеріал лінзи -->
+                    <div class="accordion-item">
+
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunLensMaterial">
+
+                                Матеріал лінзи
+
+                            </button>
+                        </h2>
+
+                        <div id="sunLensMaterial"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Полікарбонат
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Скло
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Тріацетат (TAC)
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Форма оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunShape">
+                                Форма оправи
+                            </button>
+                        </h2>
+
+                        <div id="sunShape"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Квадратні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Круглі</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Прямокутні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Авіатори</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Котяче око</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Панто</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Овальні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Багатокутні</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Тип оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunFrameType">
+                                Тип оправи
+                            </button>
+                        </h2>
+
+                        <div id="sunFrameType"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Повноободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Напівободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Безободкові</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Колір -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunColor">
+                                Колір
+                            </button>
+                        </h2>
+
+                        <div id="sunColor"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Чорний</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Сріблястий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Золотий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Коричневий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Синій</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Матеріал оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunMaterial">
+                                Матеріал оправи
+                            </button>
+                        </h2>
+
+                        <div id="sunMaterial"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Пластик (Ацетат)</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Метал</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Титан</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Комбінований</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Дерево</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Наявність -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sunStock">
+                                Наявність
+                            </button>
+                        </h2>
+
+                        <div id="sunStock"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sunAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        В наявності
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Для спорту -->
+            <div id="sportFilters" class="category-filters">
+                <div class="accordion" id="sportAccordion">
+                    <!-- Бренд -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportBrand">
+                                Бренд
+                            </button>
+                        </h2>
+
+                        <div id="sportBrand"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ray-Ban</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Polaroid</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Carrera</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Ціна -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportPrice">
+                                Ціна
+                            </button>
+                        </h2>
+
+                        <div id="sportPrice"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="row g-2 mb-3">
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="Від">
+                                    </div>
+
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="До">
+                                    </div>
+                                </div>
+
+                                <label class="form-label">
+                                    Діапазон цін
+                                </label>
+
+                                <input type="range"
+                                    class="form-range"
+                                    min="0"
+                                    max="10000">
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Стать -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportGender">
+                                Стать
+                            </button>
+                        </h2>
+
+                        <div id="sportGender"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Чоловічі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Жіночі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Унісекс</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Дитячі</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Поляризація -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportPolarization">
+                                Поляризація
+                            </button>
+                        </h2>
+
+                        <div id="sportPolarization"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Так</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ні</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- UV Захист -->
+                    <div class="accordion-item">
+
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportUv">
+
+                                Ступінь захисту UV
+
+                            </button>
+                        </h2>
+
+                        <div id="sportUv"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">UV400</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Категорія 1</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Категорія 2</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Категорія 3</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Категорія 4</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Дзеркальне напилення -->
+                    <div class="accordion-item">
+
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportMirror">
+
+                                Дзеркальне напилення
+
+                            </button>
+                        </h2>
+
+                        <div id="sportMirror"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Так</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ні</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Матеріал лінзи -->
+                    <div class="accordion-item">
+
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportLensMaterial">
+
+                                Матеріал лінзи
+
+                            </button>
+                        </h2>
+
+                        <div id="sportLensMaterial"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Полікарбонат
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Скло
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Тріацетат (TAC)
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Форма оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportShape">
+                                Форма оправи
+                            </button>
+                        </h2>
+
+                        <div id="sportShape"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Квадратні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Круглі</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Прямокутні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Авіатори</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Котяче око</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Панто</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Овальні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Багатокутні</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Тип оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportFrameType">
+                                Тип оправи
+                            </button>
+                        </h2>
+
+                        <div id="sportFrameType"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Повноободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Напівободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Безободкові</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Колір -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportColor">
+                                Колір
+                            </button>
+                        </h2>
+
+                        <div id="sportColor"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Чорний</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Сріблястий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Золотий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Коричневий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Синій</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Матеріал оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportMaterial">
+                                Матеріал оправи
+                            </button>
+                        </h2>
+
+                        <div id="sportMaterial"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Пластик (Ацетат)</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Метал</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Титан</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Комбінований</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Дерево</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Наявність -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#sportStock">
+                                Наявність
+                            </button>
+                        </h2>
+
+                        <div id="sportStock"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#sportAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        В наявності
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Комп'ютерні -->
+            <div id="computerFilters" class="category-filters">
+                <div class="accordion" id="computerAccordion">
+                    <!-- Бренд -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#computerBrand">
+                                Бренд
+                            </button>
+                        </h2>
+
+                        <div id="computerBrand"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#computerAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ray-Ban</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Polaroid</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Carrera</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Ціна -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#computerPrice">
+                                Ціна
+                            </button>
+                        </h2>
+
+                        <div id="computerPrice"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#computerAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="row g-2 mb-3">
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="Від">
+                                    </div>
+
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="До">
+                                    </div>
+                                </div>
+
+                                <label class="form-label">
+                                    Діапазон цін
+                                </label>
+
+                                <input type="range"
+                                    class="form-range"
+                                    min="0"
+                                    max="10000">
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Стать -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#computerGender">
+                                Стать
+                            </button>
+                        </h2>
+
+                        <div id="computerGender"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#computerAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Чоловічі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Жіночі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Унісекс</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Дитячі</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Захист від синього спектру (Blue Blocker) -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#computerPolarization">
+                                Захист від синього спектру (Blue Blocker)
+                            </button>
+                        </h2>
+
+                        <div id="computerPolarization"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#computerAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Так</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ні</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Матеріал лінзи -->
+                    <div class="accordion-item">
+
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#computerLensMaterial">
+
+                                Матеріал лінзи
+
+                            </button>
+                        </h2>
+
+                        <div id="computerLensMaterial"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#computerAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Полікарбонат
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Скло
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Тріацетат (TAC)
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Форма оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#computerShape">
+                                Форма оправи
+                            </button>
+                        </h2>
+
+                        <div id="computerShape"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#computerAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Квадратні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Круглі</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Прямокутні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Авіатори</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Котяче око</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Панто</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Овальні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Багатокутні</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Тип оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#computerFrameType">
+                                Тип оправи
+                            </button>
+                        </h2>
+
+                        <div id="computerFrameType"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#computerAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Повноободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Напівободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Безободкові</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Колір -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#computerColor">
+                                Колір
+                            </button>
+                        </h2>
+
+                        <div id="computerColor"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#computerAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Чорний</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Сріблястий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Золотий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Коричневий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Синій</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Матеріал оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#computerMaterial">
+                                Матеріал оправи
+                            </button>
+                        </h2>
+
+                        <div id="computerMaterial"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#computerAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Пластик (Ацетат)</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Метал</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Титан</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Комбінований</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Дерево</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Наявність -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#computerStock">
+                                Наявність
+                            </button>
+                        </h2>
+
+                        <div id="computerStock"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#computerAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        В наявності
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Антиблік	 -->
+            <div id="antiglareFilters" class="category-filters">
+                <div class="accordion" id="antiglareAccordion">
+                    <!-- Бренд -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#antiglareBrand">
+                                Бренд
+                            </button>
+                        </h2>
+
+                        <div id="antiglareBrand"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#antiglareAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ray-Ban</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Polaroid</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Carrera</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Ціна -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#antiglarePrice">
+                                Ціна
+                            </button>
+                        </h2>
+
+                        <div id="antiglarePrice"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#antiglareAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="row g-2 mb-3">
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="Від">
+                                    </div>
+
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="До">
+                                    </div>
+                                </div>
+
+                                <label class="form-label">
+                                    Діапазон цін
+                                </label>
+
+                                <input type="range"
+                                    class="form-range"
+                                    min="0"
+                                    max="10000">
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Стать -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#antiglareGender">
+                                Стать
+                            </button>
+                        </h2>
+
+                        <div id="antiglareGender"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#antiglareAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Чоловічі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Жіночі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Унісекс</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Дитячі</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Захист від синього спектру (Blue Blocker) -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#antiglarePolarization">
+                                Захист від синього спектру (Blue Blocker)
+                            </button>
+                        </h2>
+
+                        <div id="antiglarePolarization"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#antiglareAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Так</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ні</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Матеріал лінзи -->
+                    <div class="accordion-item">
+
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#antiglareLensMaterial">
+
+                                Матеріал лінзи
+
+                            </button>
+                        </h2>
+
+                        <div id="antiglareLensMaterial"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#antiglareAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Полікарбонат
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Скло
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Тріацетат (TAC)
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Форма оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#antiglareShape">
+                                Форма оправи
+                            </button>
+                        </h2>
+
+                        <div id="antiglareShape"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#antiglareAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Квадратні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Круглі</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Прямокутні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Авіатори</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Котяче око</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Панто</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Овальні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Багатокутні</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Тип оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#antiglareFrameType">
+                                Тип оправи
+                            </button>
+                        </h2>
+
+                        <div id="antiglareFrameType"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#antiglareAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Повноободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Напівободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Безободкові</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Колір -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#antiglareColor">
+                                Колір
+                            </button>
+                        </h2>
+
+                        <div id="antiglareColor"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#antiglareAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Чорний</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Сріблястий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Золотий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Коричневий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Синій</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Матеріал оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#antiglareMaterial">
+                                Матеріал оправи
+                            </button>
+                        </h2>
+
+                        <div id="antiglareMaterial"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#antiglareAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Пластик (Ацетат)</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Метал</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Титан</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Комбінований</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Дерево</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Наявність -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#antiglareStock">
+                                Наявність
+                            </button>
+                        </h2>
+
+                        <div id="antiglareStock"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#antiglareAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        В наявності
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Оправи -->
+            <div id="framesFilters" class="category-filters">
+                <div class="accordion" id="framesAccordion">
+                    <!-- Бренд -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#framesBrand">
+                                Бренд
+                            </button>
+                        </h2>
+
+                        <div id="framesBrand"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#framesAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Ray-Ban</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Polaroid</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Carrera</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Ціна -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#framesPrice">
+                                Ціна
+                            </button>
+                        </h2>
+
+                        <div id="framesPrice"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#framesAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="row g-2 mb-3">
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="Від">
+                                    </div>
+
+                                    <div class="col">
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="До">
+                                    </div>
+                                </div>
+
+                                <label class="form-label">
+                                    Діапазон цін
+                                </label>
+
+                                <input type="range"
+                                    class="form-range"
+                                    min="0"
+                                    max="10000">
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Стать -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#framesGender">
+                                Стать
+                            </button>
+                        </h2>
+
+                        <div id="framesGender"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#framesAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Чоловічі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Жіночі</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Унісекс</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">Дитячі</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Форма оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#framesShape">
+                                Форма оправи
+                            </button>
+                        </h2>
+
+                        <div id="framesShape"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#framesAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Квадратні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Круглі</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Прямокутні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Авіатори</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Котяче око</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Панто</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Овальні</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Багатокутні</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Тип оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#framesFrameType">
+                                Тип оправи
+                            </button>
+                        </h2>
+
+                        <div id="framesFrameType"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#framesAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Повноободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Напівободкові</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Безободкові</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Колір -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#framesColor">
+                                Колір
+                            </button>
+                        </h2>
+
+                        <div id="framesColor"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#framesAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Чорний</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Сріблястий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Золотий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Коричневий</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Синій</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Матеріал оправи -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#framesMaterial">
+                                Матеріал оправи
+                            </button>
+                        </h2>
+
+                        <div id="framesMaterial"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#framesAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Пластик (Ацетат)</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Метал</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Титан</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Комбінований</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Дерево</label></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Наявність -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#framesStock">
+                                Наявність
+                            </button>
+                        </h2>
+
+                        <div id="framesStock"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#framesAccordion">
+
+                            <div class="accordion-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        В наявності
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Окулярні лінзи -->
+            <div id="lensesFilters" class="category-filters">
+                <h5>Lenses Filters</h5>
+            </div>
+
+            <div id="contactsFilters" class="category-filters">
+                <h5>Contacts Filters</h5>
+            </div>
+
+            <div id="accessoriesFilters" class="category-filters">
+                <h5>Accessories Filters</h5>
+            </div>
+
+        </aside>
+
+        <!-- PRODUCTS -->
+
+        <section class="products">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <div>
+                    124 товари
+                </div>
+
+                <select class="form-select w-auto">
+                    <option>За популярністю</option>
+                    <option>Спочатку дешевші</option>
+                    <option>Спочатку дорожчі</option>
+                    <option>Новинки</option>
+                </select>
+
+            </div>
+
+            <div class="row g-4">
+
+                <!-- CARD -->
+
+                <div class="col-6 col-md-4 col-xl-3">
+                    <div class="product-card">
+                        <div class="product-image"></div>
+
+                        <div class="product-body">
+
+                            <h6>Blue Vision Pro</h6>
+
+                            <small class="text-success">
+                                В наявності
+                            </small>
+
+                            <div class="price mt-2">
+                                2499 ₴
+                            </div>
+
+                            <button class="btn btn-primary w-100 mt-3">
+                                Купити
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-xl-3">
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-body">
+                            <h6>Office Protect</h6>
+                            <small class="text-success">В наявності</small>
+                            <div class="price mt-2">2799 ₴</div>
+                            <button class="btn btn-primary w-100 mt-3">Купити</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-xl-3">
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-body">
+                            <h6>Vision Work</h6>
+                            <small class="text-success">В наявності</small>
+                            <div class="price mt-2">1999 ₴</div>
+                            <button class="btn btn-primary w-100 mt-3">Купити</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-xl-3">
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-body">
+                            <h6>Blue Light Max</h6>
+                            <small class="text-success">В наявності</small>
+                            <div class="price mt-2">3199 ₴</div>
+                            <button class="btn btn-primary w-100 mt-3">Купити</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const category = params.get('category');
+
+const categories = {
+    prescription: "Замовлення по рецепту",
+    vision: "Окуляри для зору",
+    sun: "Сонцезахисні окуляри",
+    sport: "Для спорту",
+    computer: "Комп'ютерні окуляри",
+    antiglare: "Антиблік",
+    frames: "Оправи",
+    lenses: "Окулярні лінзи",
+    contacts: "Контактні лінзи",
+    accessories: "Аксесуари"
+};
+
+const categoryName = categories[category] || "Каталог";
+
+document.getElementById("categoryTitle").textContent = categoryName;
+document.getElementById("categoryBreadcrumb").textContent = categoryName;
+
+
+const filterMap = {
+    prescription: "prescriptionFilters",
+    vision: "visionFilters",
+    sun: "sunFilters",
+    sport: "sportFilters",
+    computer: "computerFilters",
+    antiglare: "antiglareFilters",
+    frames: "framesFilters",
+    lenses: "lensesFilters",
+    contacts: "contactsFilters",
+    accessories: "accessoriesFilters"
+};
+
+const filterId = filterMap[category];
+
+if (filterId) {
+    document.getElementById(filterId).style.display = "block";
+}
+
+</script>
+
+</body>
+</html>

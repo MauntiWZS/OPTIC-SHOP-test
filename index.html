@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оптика</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .top-header {
+            background: #fff;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .search-block {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: .2s;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .category-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .product-image {
+            height: 220px;
+            background: #e9ecef;
+        }
+
+        footer {
+            background: #212529;
+            color: white;
+            margin-top: 60px;
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+
+<header class="top-header">
+    <div class="container py-3">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-3">
+                <div class="logo">
+                    OPTIC SHOP
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <small class="text-muted">
+                    Окуляри, лінзи та аксесуари
+                </small>
+            </div>
+
+            <div class="col-md-3 text-md-end">
+                <strong>+380 XX XXX XX XX</strong>
+            </div>
+
+        </div>
+
+    </div>
+</header>
+
+<!-- MENU -->
+
+<nav class="navbar navbar-expand-lg bg-white border-bottom">
+    <div class="container">
+
+        <ul class="navbar-nav me-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Каталог</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Доставка</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Оплата</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Контакти</a>
+            </li>
+
+        </ul>
+
+        <button class="btn btn-outline-primary">
+            🛒 Кошик (0)
+        </button>
+
+    </div>
+</nav>
+
+<!-- SEARCH -->
+
+<section class="container my-4">
+
+    <div class="search-block">
+
+        <div class="input-group input-group-lg">
+
+            <input
+                type="text"
+                class="form-control"
+                placeholder="Пошук окулярів, лінз, оправ...">
+
+            <button class="btn btn-primary">
+                Пошук
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="container my-5">
+
+    <h2 class="section-title">
+        Категорії
+    </h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <a href="catalog.html?category=prescription" class="text-decoration-none text-dark">
+                <div class="category-card">
+                    Замовлення по рецепту
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="catalog.html?category=vision" class="text-decoration-none text-dark">
+                <div class="category-card">
+                    Окуляри для зору
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="catalog.html?category=sun" class="text-decoration-none text-dark">
+                <div class="category-card">
+                    Сонцезахисні окуляри
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="catalog.html?category=sport" class="text-decoration-none text-dark">
+                <div class="category-card">
+                    Для спорту
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="catalog.html?category=computer" class="text-decoration-none text-dark">
+                <div class="category-card">
+                    Комп'ютерні
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="catalog.html?category=antiglare" class="text-decoration-none text-dark">
+                <div class="category-card">
+                    Антиблік
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="catalog.html?category=frames" class="text-decoration-none text-dark">
+                <div class="category-card">
+                    Оправи
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="catalog.html?category=lenses" class="text-decoration-none text-dark">
+                <div class="category-card">
+                    Окулярні лінзи
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="catalog.html?category=contacts" class="text-decoration-none text-dark">
+                <div class="category-card">
+                    Контактні лінзи
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="catalog.html?category=accessories" class="text-decoration-none text-dark">
+                <div class="category-card">
+                    Аксесуари
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BESTSELLERS -->
+
+<section class="container my-5">
+
+    <h2 class="section-title">
+        Хіти продажів
+    </h2>
+
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="product-card">
+
+                <div class="product-image"></div>
+
+                <div class="p-3">
+
+                    <h5>Ray-Ban RX001</h5>
+
+                    <p class="text-muted mb-2">
+                        Для зору
+                    </p>
+
+                    <h4>4 299 ₴</h4>
+
+                    <button class="btn btn-primary w-100">
+                        Купити
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="product-card">
+
+                <div class="product-image"></div>
+
+                <div class="p-3">
+
+                    <h5>Polaroid Sport</h5>
+
+                    <p class="text-muted mb-2">
+                        Спортивні
+                    </p>
+
+                    <h4>3 199 ₴</h4>
+
+                    <button class="btn btn-primary w-100">
+                        Купити
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="product-card">
+
+                <div class="product-image"></div>
+
+                <div class="p-3">
+
+                    <h5>Blue Protect</h5>
+
+                    <p class="text-muted mb-2">
+                        Комп'ютерні
+                    </p>
+
+                    <h4>2 450 ₴</h4>
+
+                    <button class="btn btn-primary w-100">
+                        Купити
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="product-card">
+
+                <div class="product-image"></div>
+
+                <div class="p-3">
+
+                    <h5>Vision Pro</h5>
+
+                    <p class="text-muted mb-2">
+                        Антиблік
+                    </p>
+
+                    <h4>2 990 ₴</h4>
+
+                    <button class="btn btn-primary w-100">
+                        Купити
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- NEW PRODUCTS -->
+
+<section class="container my-5">
+
+    <h2 class="section-title">
+        Новинки
+    </h2>
+
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+            <div class="product-card">
+                <div class="product-image"></div>
+
+                <div class="p-3">
+                    <h5>New Vision 2026</h5>
+                    <h4>4 899 ₴</h4>
+
+                    <button class="btn btn-outline-primary w-100">
+                        Детальніше
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="product-card">
+                <div class="product-image"></div>
+
+                <div class="p-3">
+                    <h5>Urban Glass</h5>
+                    <h4>3 590 ₴</h4>
+
+                    <button class="btn btn-outline-primary w-100">
+                        Детальніше
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="product-card">
+                <div class="product-image"></div>
+
+                <div class="p-3">
+                    <h5>Office Protect</h5>
+                    <h4>2 790 ₴</h4>
+
+                    <button class="btn btn-outline-primary w-100">
+                        Детальніше
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="product-card">
+                <div class="product-image"></div>
+
+                <div class="p-3">
+                    <h5>Sport Active</h5>
+                    <h4>3 950 ₴</h4>
+
+                    <button class="btn btn-outline-primary w-100">
+                        Детальніше
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <h5>OPTIC SHOP</h5>
+            </div>
+
+            <div class="col-md-4">
+                <p>Доставка Новою Поштою</p>
+                <p>Онлайн оплата</p>
+            </div>
+
+            <div class="col-md-4 text-md-end">
+                <p>+380 XX XXX XX XX</p>
+                <p>info@opticshop.ua</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
