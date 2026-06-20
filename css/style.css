@@ -1,3 +1,278 @@
+
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+    background: #f8f9fa;
+    margin: 0;       /* убираем стандартные отступы браузера */
+    padding: 0;      /* убираем внутренние отступы */
+    width: 100%;     /* ширина на всю страницу */
+}
+
+.container {
+  width: 100%;
+  max-width: 1980px; 
+  margin: 0 auto;     /* центрирование */
+}
+
+.top-header {
+    height: 80px;
+    background: #fff;
+    border-bottom: 1px solid #e9ecef;
+}
+
+
+
+.search-block {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+
+.category-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: .2s;
+    cursor: pointer;
+    height: 100%;
+}
+
+.category-card:hover {
+    transform: translateY(-3px);
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%;
+    border: 1px solid #eee;
+}
+
+.product-image {
+    height: 220px;
+    background: #e9ecef;
+}
+
+footer {
+    background: #212529;
+    color: white;
+    margin-top: 60px;
+    padding: 40px 0;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+
+/* ---------------- navbar ------------------------------------------------------------------------ */
+.navbar{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;         /* отступы слева/справа */
+    width: 100%;         /* Растягивает контейнер на всю ширину экрана */
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+.left-group, .right-group {
+  display: flex;
+  gap: 10px;           /* Отступ между элементами внутри самих групп */
+  margin-left: 30px;  /* Отступ слева */
+  margin-right: 30px; /* Отступ справа */
+}
+.nav-menu{
+    display: none;
+}
+.nav-menu img {
+    display: none;
+}
+
+.nav-catalog{
+    display: flex;
+    width: 2rem;             /* адаптивная ширина */
+    height: 2rem;            /* адаптивная высота */
+    align-items: center;
+    justify-content: center;
+    border: 5px;
+    background: 5px;
+    padding:0;
+    gap: 5px; 
+    margin-left: 70px;
+}
+.nav-catalog img {
+    height: 100%;
+    width: auto;
+    
+}
+.nav-catalog-text {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    width: auto;
+    height: auto;
+    flex-shrink:0;
+}
+
+.nav-logo{
+    width: 2rem;             /* адаптивная ширина */
+    height: 2rem;            /* адаптивная высота */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+}
+.nav-logo img {
+    height: 200%;
+    width: auto;
+}
+/* .logo {
+    font-size: 28px;
+    font-weight: 700;
+    width: auto;
+    height: auto;
+    flex-shrink:0;
+} */
+
+.nav-search {
+    flex-grow: 1;        /* Магия! Говорит поиску занять ВСЁ оставшееся свободное место */
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5; /* Фон всей поисковой строки */
+    border-radius: 8px;        /* Скругление углов */
+    padding: 4px 8px;          /* Внутренние отступы, чтобы элементы не прижимались к краям */
+    min-width: 50px;             /* Минимальная ширина */
+    margin-left: 15px;  /* Отступ слева */
+    margin-right: 0px; /* Отступ справа */
+}
+.nav-search input {
+    display: flex;
+    flex-grow: 1;              /* Занимает всё свободное пространство слева */
+    /* Исправление: убираем системное ограничение инпута на сжатие */
+    width: 0;                  
+    min-width: 0;
+    border: none;              /* Убираем родную рамку инпута */
+    background: none;          /* Убираем родной фон инпута */
+    padding: 8px;              /* Внутренний отступ для текста */
+    outline: none;             /* Убирает стандартный контур при клике */
+    font-size: 16px;
+}
+.nav-btn-search {
+    border: none;              /* Убираем рамку кнопки */
+    background: none;          /* Убираем фон кнопки */
+    padding: 8px;              /* Делаем область клика иконки удобной */
+    cursor: pointer;           /* Меняем курсор при наведении */
+    display: flex;
+    align-items: center;
+}
+.nav-btn-search img {
+    width: avto;               /* Управляем размером иконки */
+    height: 24px;
+}
+.nav-phone-img {
+    display: none;
+}
+
+.nav-phone {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f8f9fa; /* Мягкий светлый фон */
+    border: 1px solid #e9ecef;
+    border-radius: 30px;        /* Округлый премиальный вид */
+    padding: 6px 6px 6px 16px;  /* Отступ слева больше, так как там нет кнопки */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    gap: 10px;                  /* Расстояние между иконкой связи и номером */
+}
+
+/* Иконка гарнитуры (наушники с микрофоном) */
+.phone-icon {
+    color: #007aff;             /* Акцентный синий цвет */
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+/* Номер телефона */
+.phone-number {
+    font-size: 16px;
+    font-weight: 600;           /* Слегка полужирный для читаемости */
+    color: #212529;
+    text-decoration: none;
+}
+
+/* Кнопка-стрелочка */
+.phone-dropdown-btn {
+    background: #ffffff;        /* Белый фон, чтобы кнопка выделялась */
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;         /* Идеально круглая кнопка */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #495057;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Легкая тень кнопки */
+    transition: all 0.2s ease;  /* Плавный переход для анимации */
+}
+
+/* Эффект при наведении на стрелочку */
+.phone-dropdown-btn:hover {
+    background-color: #007aff;  /* Меняем фон на синий */
+    color: #ffffff;             /* Стрелочка становится белой */
+    transform: translateY(1px); /* Легкий сдвиг вниз при клике/наведении */
+}
+
+/* Стили самой иконки-стрелочки внутри кнопки */
+.phone-dropdown-btn i {
+    font-size: 14px;
+    line-height: 1;
+}
+.nav-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;   
+}
+.nav-icon {
+    width: 2rem;             /* адаптивная ширина */
+    height: 2rem;            /* адаптивная высота */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:none;
+    background:none;
+    padding:0;
+    gap: 20px;   
+}
+.nav-icon img {
+    height: 100%;
+    width: auto;
+    
+}
+
+.nav-bar {
+  display: none;
+}
+
+
+
+
+
+
+/* --------------------------------------- */
+
 .filters {
     width: 300px;
     height: calc(100vh - 180px);
@@ -10,22 +285,9 @@
     display:none;
 }
 
-
-body{
-    background:#f8f9fa;
-}
-
 .catalog-layout{
     display:flex;
     gap:24px;
-}
-
-.filters{
-    width: 300px;
-    height: calc(100vh - 180px);
-    overflow-y: auto;
-    position: sticky;
-    top: 20px;
 }
 
 .filter-box{
@@ -39,19 +301,6 @@ body{
     flex:1;
 }
 
-.product-card{
-    background:white;
-    border-radius:12px;
-    overflow:hidden;
-    height:100%;
-    border:1px solid #eee;
-}
-
-.product-image{
-    height:220px;
-    background:#e9ecef;
-}
-
 .product-body{
     padding:15px;
 }
@@ -61,14 +310,629 @@ body{
     font-weight:700;
 }
 
-@media (max-width: 992px){
-
-    .catalog-layout{
-        flex-direction:column;
+@media (min-width: 240px) and (max-width: 359px) {
+    
+    .container {
+        padding: 0 15px; /* На мобилке убираем фиксированную ширину, оставляем только отступы по бокам */
+    }
+    .top-header {
+        height: 50px;
+        background: #fff;
+        border-bottom: 1px solid #e9ecef;
+    }
+    .navbar{
+        height: 50px;
+        padding: 5px 5px;
+        border-bottom: 1px solid #ddd;
+    }
+    .left-group, .right-group {
+        display: flex;
+        gap: 10px;         /* Отступ между элементами внутри самих групп */
+        margin-left: 0px;  /* Отступ слева */
+        margin-right: 0px; /* Отступ справа */
     }
 
-    .filters{
-        width:100%;
+    /* Например, если на ПК элементы стояли в ряд, на мобилке их можно пустить друг под друга */
+    .footer-links {
+        flex-direction: column; 
     }
+    .nav-menu{
+        display: flex;
+        width: 2rem;             /* адаптивная ширина */
+        height: 2rem;            /* адаптивная высота */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px;
+        background: 5px;
+        padding:0;
+        gap: 5px; 
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+    .nav-menu img {
+        display: flex;
+        height: 100%;
+        width: auto;
+    }
+    .nav-logo img {
+        margin-top: 5px;
+        height: 120%;
+        width: auto;
+    }
+    .nav-catalog{
+        display: none;
+    }
+    .nav-search{
+        display: none;
+    }
+    .nav-phone-img{
+        display: flex;
+        width: 2rem;             /* адаптивная ширина */
+        height: 2rem;            /* адаптивная высота */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px;
+        background: 5px;
+        padding:0;
+        gap: 5px; 
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+    .nav-phone-img img {
+        display: flex;
+        height: 100%;
+        width: auto;
+    }
+    .nav-phone{
+        display: none;
+    }
+/* -------------------------- с этим надо разобраться ---------------------------------------------------------- */
+      /* Делаем левый и правый контейнеры аккуратными флексами */
+    .header-left, .header-right {
+        display: flex;
+        align-items: center;
+    }
+    .header-right .phone {
+        margin-right: 10px;
+    }
+/* ------------------------------------------------------------------------------ */
+
+      /* 3. Включаем и прижимаем к низу мобильное меню */
+    .nav-bar {
+        display: flex;
+        position: fixed;
+        justify-content: space-around;
+        text-align: center;
+        bottom: 0;         /* прижимаем к нижнему краю */
+        left: 0;
+        width: 100%;       /* растягиваем на всю ширину */
+        display: flex;
+        justify-content: space-around;
+        background-color: #fff; /* фон панели */
+        border-top: 1px solid #ccc; /* тонкая линия сверху */
+        padding: 8px 0;
+        z-index: 1000;     /* чтобы панель была поверх контента */
+    }
+    .bar-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+    }
+    .bar-icon img {
+        width: 26px;   /* фиксируем размер картинок */
+        margin-bottom: 4px;
+    }
+    .bar-icon div {
+        font-size: 11px;
+    }
+    #favoriteBtn, #cartBtn {
+        display: none;
+    }
+    #accountBtn {
+        display: flex;
+    }
+    .offcanvas-header {
+        margin: 0;            /* наружные отступы */
+        padding: 16px;        /* внутренние отступы */
+        height: 50px;         /* фиксированная высота */
+    }
+    .offcanvas-menu {
+        display: flex;
+        justify-content: space-between; /* левый блок прижат к началу, правый к концу */
+        align-items: center;            /* выравнивание по вертикали */
+        width: 100%;
+    }
+    .offcanvas-menu-left {
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 15px;
+    }
+    .offcanvas-menu-right {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 15px;
+        gap: 10px;
+    }
+    .offcanvas-icon {
+        width: 2rem;             /* адаптивная ширина */
+        height: 2rem;            /* адаптивная высота */
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+        border:none;
+        background:none;
+    }
+    .offcanvas-icon img {
+        height: 100%;
+        width: auto;
+
+    }
+
+    .offcanvas-schedule {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .offcanvas-schedule-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* стрелка уходит вправо */
+        padding: 8px 12px;
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        background: none;
+    }
+    .offcanvas-schedule-item button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background: none;   /* убираем фон */
+        border: none;       /* убираем рамку */
+        padding: 0;         /* убираем лишние отступы */
+        margin-right: 8px;  /* небольшой отступ от текста */
+    }
+    .offcanvas-schedule-item img {
+        width: 24px;
+        margin-right: 8px; /* отступ от текста */
+    }
+    .offcanvas-schedule-item span {
+        flex-grow: 1; /* текст занимает всё пространство между иконкой и стрелкой */
+        text-align: left;
+    }
+    .offcanvas-schedule-item .arrow {
+        font-size: 18px;
+        flex-grow: 0;       /* стрелка не растягивается */
+        margin-left: auto;  /* прижимается к правому краю */
+        font-size: 18px;
+        color: #888;
+    }
+
+    /* ------------------------------------------------------------------------- */
+    .offcanvas-info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .offcanvas-info-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* стрелка уходит вправо */
+        padding: 6px 12px;
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        border: none;
+        background: none;
+    }
+    .offcanvas-info-item button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background: none;   /* убираем фон */
+        border: none;       /* убираем рамку */
+        padding: 0;         /* убираем лишние отступы */
+        margin-right: 8px;  /* небольшой отступ от текста */
+    }
+    .offcanvas-info-item span {
+        flex-grow: 1; /* текст занимает всё пространство между иконкой и стрелкой */
+        text-align: left;
+    }
+    .offcanvas-info-item .arrow {
+        font-size: 18px;
+        flex-grow: 0;       /* стрелка не растягивается */
+        margin-left: auto;  /* прижимается к правому краю */
+        font-size: 18px;
+        color: #888;
+    }
+    .offcanvas-timetable {
+        padding: 0px 12px;
+    }
+    .offcanvas-timetable span {
+        display: block; /* каждый span занимает всю строку */
+        margin-bottom: 4px 4px; /* небольшой отступ снизу для разделения */
+        font-size: 14px;
+    }
+}
+@media (min-width: 360px) and (max-width: 479px) {
+    
+    .container {
+        padding: 0 15px; /* На мобилке убираем фиксированную ширину, оставляем только отступы по бокам */
+    }
+    .top-header {
+        height: 50px;
+        background: #fff;
+        border-bottom: 1px solid #e9ecef;
+    }
+    .navbar{
+        height: 50px;
+        padding: 5px 5px;
+        border-bottom: 1px solid #ddd;
+    }
+    .left-group, .right-group {
+        display: flex;
+        gap: 10px;           /* Отступ между элементами внутри самих групп */
+        margin-left: 0px;  /* Отступ слева */
+        margin-right: 0px; /* Отступ справа */
+    }
+
+    /* Например, если на ПК элементы стояли в ряд, на мобилке их можно пустить друг под друга */
+    .footer-links {
+        flex-direction: column; 
+    }
+    .nav-menu{
+        display: flex;
+        width: 2rem;             /* адаптивная ширина */
+        height: 2rem;            /* адаптивная высота */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px;
+        background: 5px;
+        padding:0;
+        gap: 5px; 
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+    .nav-menu img {
+        display: flex;
+        height: 100%;
+        width: auto;
+    }
+    .nav-logo img {
+        margin-top: 5px;
+        height: 120%;
+        width: auto;
+    }
+    .nav-catalog{
+        display: none;
+    }
+    .nav-search{
+        display: none;
+    }
+    .nav-phone-img{
+        display: flex;
+        width: 2rem;             /* адаптивная ширина */
+        height: 2rem;            /* адаптивная высота */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px;
+        background: 5px;
+        padding:0;
+        gap: 5px; 
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+    .nav-phone-img img {
+        display: flex;
+        height: 100%;
+        width: auto;
+    }
+    .nav-phone{
+        display: none;
+    }
+/* -------------------------- с этим надо разобраться ---------------------------------------------------------- */
+      /* Делаем левый и правый контейнеры аккуратными флексами */
+    .header-left, .header-right {
+        display: flex;
+        align-items: center;
+    }
+    .header-right .phone {
+        margin-right: 10px;
+    }
+/* ------------------------------------------------------------------------------ */
+
+      /* 3. Включаем и прижимаем к низу мобильное меню */
+    .nav-bar {
+        display: flex;
+        position: fixed;
+        justify-content: space-around;
+        text-align: center;
+        bottom: 0;         /* прижимаем к нижнему краю */
+        left: 0;
+        width: 100%;       /* растягиваем на всю ширину */
+        display: flex;
+        justify-content: space-around;
+        background-color: #fff; /* фон панели */
+        border-top: 1px solid #ccc; /* тонкая линия сверху */
+        padding: 8px 0;
+        z-index: 1000;     /* чтобы панель была поверх контента */
+    }
+    .bar-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+    }
+    .bar-icon img {
+        width: 32px;   /* фиксируем размер картинок */
+        margin-bottom: 4px;
+    }
+    .bar-icon div {
+        font-size: 14px;
+    }
+    #favoriteBtn, #cartBtn {
+        display: none;
+    }
+    #accountBtn {
+        display: flex;
+    }
+}
+@media (min-width: 480px) and (max-width: 576px) {
+    
+    .container {
+        padding: 0 15px; /* На мобилке убираем фиксированную ширину, оставляем только отступы по бокам */
+    }
+    .top-header {
+        height: 60px;
+        background: #fff;
+        border-bottom: 1px solid #e9ecef;
+    }
+    .navbar{
+        height: 60px;
+        padding: 5px 5px;
+        border-bottom: 1px solid #ddd;
+    }
+    .left-group, .right-group {
+        display: flex;
+        gap: 10px;           /* Отступ между элементами внутри самих групп */
+        margin-left: 0px;  /* Отступ слева */
+        margin-right: 0px; /* Отступ справа */
+    }
+
+    /* Например, если на ПК элементы стояли в ряд, на мобилке их можно пустить друг под друга */
+    .footer-links {
+        flex-direction: column; 
+    }
+    .nav-menu{
+        display: flex;
+        width: 2rem;             /* адаптивная ширина */
+        height: 2rem;            /* адаптивная высота */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px;
+        background: 5px;
+        padding:0;
+        gap: 5px; 
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+    .nav-menu img {
+        display: flex;
+        height: 100%;
+        width: auto;
+    }
+    .nav-logo img {
+        margin-top: 5px;
+        height: 120%;
+        width: auto;
+    }
+    .nav-catalog{
+        display: none;
+    }
+    .nav-search{
+        display: none;
+    }
+    .nav-phone-img{
+        display: flex;
+        width: 2rem;             /* адаптивная ширина */
+        height: 2rem;            /* адаптивная высота */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px;
+        background: 5px;
+        padding:0;
+        gap: 5px; 
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+    .nav-phone-img img {
+        display: flex;
+        height: 100%;
+        width: auto;
+    }
+    .nav-phone{
+        display: none;
+    }
+/* -------------------------- с этим надо разобраться ---------------------------------------------------------- */
+      /* Делаем левый и правый контейнеры аккуратными флексами */
+    .header-left, .header-right {
+        display: flex;
+        align-items: center;
+    }
+    .header-right .phone {
+        margin-right: 10px;
+    }
+/* ------------------------------------------------------------------------------ */
+
+      /* 3. Включаем и прижимаем к низу мобильное меню */
+    /* .body {
+        padding-bottom: 60px;
+    } */
+    .nav-bar {
+        display: flex;
+        position: fixed;
+        justify-content: space-around;
+        text-align: center;
+        bottom: 0;         /* прижимаем к нижнему краю */
+        left: 0;
+        width: 100%;       /* растягиваем на всю ширину */
+        display: flex;
+        justify-content: space-around;
+        background-color: #fff; /* фон панели */
+        border-top: 1px solid #ccc; /* тонкая линия сверху */
+        padding: 8px 0;
+        z-index: 1000;     /* чтобы панель была поверх контента */
+    }
+    .bar-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+    }
+    .bar-icon img {
+        width: 40px;   /* фиксируем размер картинок */
+        margin-bottom: 4px;
+    }
+    .bar-icon div {
+        font-size: 16px;
+    }
+    #favoriteBtn, #cartBtn {
+        display: none;
+    }
+    #accountBtn {
+        display: flex;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px){
+    .left-group {
+        gap: 10px;           /* Отступ между элементами внутри самих групп */
+        margin-left: 30px;  /* Отступ слева */
+        margin-right: 0px; /* Отступ справа */
+        }
+    .right-group {
+        gap: 10px;           /* Отступ между элементами внутри самих групп */
+        margin-left: 10px;  /* Отступ слева */
+        margin-right: 30px; /* Отступ справа */
+        }
+    .nav-logo{
+        margin-right: 5px;  
+    }
+    .nav-catalog {
+        margin-left: 10px;
+    }
+    .nav-catalog-text {
+        display: none;
+    }
+    .nav-phone{
+        display: none;
+    }
+    .nav-phone-img{
+        display: flex;
+        width: 2rem;             /* адаптивная ширина */
+        height: 2rem;            /* адаптивная высота */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px;
+        background: 5px;
+        padding:0;
+        gap: 5px; 
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+    .nav-phone-img img {
+        display: flex;
+        height: 100%;
+        width: auto;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px){
+
+    .nav-logo{
+        margin-right: 5px;  
+    }
+    .nav-catalog{
+        margin-left: 20px;
+    }
+    .nav-catalog-text {
+        display: none;
+    }
+    .nav-phone{
+        display: none;
+    }
+    .nav-phone-img{
+        display: flex;
+        width: 2rem;             /* адаптивная ширина */
+        height: 2rem;            /* адаптивная высота */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px;
+        background: 5px;
+        padding:0;
+        gap: 5px; 
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+    .nav-phone-img img {
+        display: flex;
+        height: 100%;
+        width: auto;
+    }
+    /* .nav-search {
+        position:relative;
+    } */
+    /* #searchBtn{
+        border:none;
+        background:none;
+        font-size:20px;
+        cursor:pointer;
+    }
+    #searchInput{
+        position:absolute;
+        right:0;
+        top:50%;
+        transform:translateY(-50%);
+        width:0;
+        opacity:0;
+        padding:8px 12px;
+        transition:all .3s ease;
+        pointer-events:none;
+    }
+
+    #searchInput.active{
+        width:500px;
+        opacity:1;
+        pointer-events:auto;
+    } */
 
 }
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1600px) {
+  .container {
+    max-width: 1600px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1920px;
+  }
+}
+
